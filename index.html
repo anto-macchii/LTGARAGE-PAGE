@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- viewport: hace que la página se adapte bien a celulares -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Troncos Garage Detailing | Lavado a domicilio en Mar del Plata</title>
+  <meta name="description" content="Lavado de autos a domicilio en Los Troncos, Mar del Plata. Interior y exterior. Consultá por WhatsApp.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Logo Los Troncos Garage Detailing">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="logo.png">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://nominatim.openstreetmap.org">
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #070707; color: #f5f7fb; }
+    .hero { background: #14171f; color: #f5f7fb; text-align: center; padding: 40px 18px; }
+    .hero h1 { font-size: 2rem; margin: 0.5rem 0; }
+    .hero p { margin: 0.9rem 0 1.2rem; color: #47c5ff; }
+    .btn-whatsapp { display: inline-block; padding: 14px 24px; border-radius: 30px; text-decoration: none; font-weight: 700; }
+  </style>
+  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="style.css">
+  </noscript>
+  <link rel="preload" as="style" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  </noscript>
+  <link rel="preload" href="Fuentes/Monserratt/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="Fuentes/Monserratt/Montserrat-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="Fuentes/Monserratt/Montserrat-Bold.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+
+  <!-- HERO: lo primero que ve el cliente -->
+  <header class="hero">
+    <!-- LOGO: la imagen tiene que llamarse "logo.png" y estar en la misma carpeta que este archivo -->
+    <img src="logo.png" alt="Los Troncos Garage Detailing" class="logo">
+    <h1>Los Troncos Garage Detailing</h1>
+    <p>Lavado de autos a domicilio en Los Troncos, Mar del Plata</p>
+    <a href="https://wa.me/5492236181955?text=Hola!%20Quiero%20consultar%20por%20un%20lavado"
+       class="btn-whatsapp" target="_blank">
+      Consultar por WhatsApp
+    </a>
+  </header>
+
+  <!-- SERVICIOS Y PRECIOS -->
+  <section id="servicios" class="servicios">
+    <h2>Servicios de Lavado</h2>
+    <div class="tarjetas">
+      <div class="tarjeta">
+        <h3>Auto</h3>
+        <p class="precio">$27.000</p>
+        <p>Lavado interior y exterior</p>
+      </div>
+      <div class="tarjeta">
+        <h3>SUV</h3>
+        <p class="precio">$30.000</p>
+        <p>Lavado interior y exterior</p>
+      </div>
+      <div class="tarjeta">
+        <h3>Camioneta</h3>
+        <p class="precio">$35.000</p>
+        <p>Lavado interior y exterior</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="galeria">
+    <h2>Nuestro trabajo</h2>
+    <div class="carousel" aria-label="Carrusel de fotos de autos">
+      <div class="carousel-track-container" tabindex="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="images/amarok/frente.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+          <div class="carousel-slide"><img src="images/amarok/lateral.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+          <div class="carousel-slide"><img src="images/amarok/adentro-conductor-lejos.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+          <div class="carousel-slide"><img src="images/amarok/adentro-conductor.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+          <div class="carousel-slide"><img src="images/amarok/atras-izquierda.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+          <div class="carousel-slide"><img src="images/amarok/atras-dereha.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+          <div class="carousel-slide"><img src="images/amarok/atras-plaza-derecha.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+          <div class="carousel-slide"><img src="images/amarok/adentro-copiloto.JPG" alt="Trabajo realizado por Los Troncos Garage Detailing" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ver-mas lavados">
+    <p class="ver-mas-text">Ver más lavados</p>
+    <a href="https://www.instagram.com/lt.detailing7600/" class="btn-instagram" target="_blank" rel="noopener">Instagram</a>
+  </section>
+
+  <section id="proceso" class="proceso">
+    <h2>¿Qué incluye el lavado?</h2>
+    <div class="descripcion-proceso">
+      <h3>Limpieza interior completa</h3>
+      <p>Aspiramos en profundidad todo el habitáculo, incluyendo alfombras, tapizados y sectores difíciles de alcanzar. Cada superficie recibe un tratamiento específico y los plásticos del tablero, consola y puertas se acondicionan para recuperar su apariencia natural sin brillo grasoso.</p>
+      <h3>Lavado exterior seguro y de alta calidad</h3>
+      <p>Realizamos un prelavado con hidro para remover la suciedad superficial y continuamos con un lavado de contacto con shampoo con cera. La técnica de aplicación protege la pintura y asegura un acabado cuidado y duradero.</p>
+      <h3>Terminaciones y detalles</h3>
+      <p>Atendemos puertas, marcos, bisagras, bordes y juntas para eliminar la suciedad acumulada en cada rincón. Antes de entregar el vehículo realizamos una revisión final para garantizar una presentación impecable.</p>
+    </div>
+    <h2>Requerimientos</h2>
+    <ul class="lista-requisitos">
+      <li>Enchufe cercano con acceso desde la calle.</li>
+      <li>Canilla a la calle o próxima al lugar de trabajo.</li>
+      <li>Espacio suficiente para maniobrar alrededor del auto.</li>
+    </ul>
+  </section>
+
+  <!-- ZONA DE COBERTURA -->
+  <section id="zona" class="zona">
+    <h2>Zona de cobertura</h2>
+    <p>Trabajamos en Los Troncos, Playa Grande y Stella Maris, Mar del Plata.</p>
+    <!-- Mapa interactivo con Leaflet + OpenStreetMap -->
+    <div class="mapa-contenedor">
+      <div id="mapa" class="mapa" role="application" aria-label="Mapa de la zona de cobertura"></div>
+      <div class="map-controls">
+        <button id="adjust-streets" class="map-btn" aria-label="Ajustar por calles">Ajustar por calles</button>
+        <button id="merge-areas" class="map-btn" aria-label="Unir áreas">Unir áreas</button>
+        <button id="clear-area" class="map-btn" aria-label="Borrar selección">Borrar selección</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <footer id="contacto" class="contacto">
+    <h2>¿Coordinamos tu lavado?</h2>
+    <a href="https://wa.me/5492236181955?text=Hola!%20Quiero%20consultar%20por%20un%20lavado"
+       class="btn-whatsapp" target="_blank">
+      Pedir turno por WhatsApp
+    </a>
+  </footer>
+  <!-- script.js: solo agrega animaciones suaves al hacer scroll -->
+  <script src="script.js" defer></script>
+  <script src="carousel.js" defer></script>
+
+</body>
+</html>

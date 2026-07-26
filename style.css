@@ -1,0 +1,433 @@
+/* style.css */
+
+/* Variables: nueva paleta pedida - oscuro y celeste vibrante */
+:root {
+  --color-negro: #070707;
+  --color-gris-oscuro: #141414;
+  --color-gris-medio: #242424;
+  --color-blanco: #f5f7fb;
+  --color-celeste: #47c5ff;
+  --color-celeste-oscuro: #19a2e5;
+  --color-texto: #e4e9f2;
+  --color-subtexto: #b8c2d1;
+  --color-borde: rgba(71, 197, 255, 0.18);
+  --fuente: 'Montserrat', Arial, sans-serif;
+  --font-heading: 'Montserrat', var(--fuente);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('Fuentes/Monserratt/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('Fuentes/Monserratt/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('Fuentes/Monserratt/Montserrat-Bold.ttf') format('truetype');
+}
+
+/* Reset básico: saca márgenes y paddings por defecto del navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* el padding no rompe el ancho de los elementos */
+}
+
+body {
+  font-family: var(--fuente);
+  color: var(--color-texto);
+  line-height: 1.5;
+  background-color: var(--color-negro);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Todos los subtitulos de seccion en negrita */
+h1,
+h2,
+.tarjeta h3 {
+  font-family: var(--font-heading);
+}
+
+h2 {
+  font-weight: 700;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #14171f 0%, #090a0f 100%);
+  color: var(--color-blanco);
+  text-align: center;
+  padding: 50px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.hero .logo {
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: var(--color-celeste);
+}
+
+/* Botón de WhatsApp (se usa en el hero y en el footer) */
+.btn-whatsapp {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-celeste), var(--color-celeste-oscuro));
+  color: var(--color-negro);
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(71, 197, 255, 0.14);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(71, 197, 255, 0.16);
+}
+
+.btn-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 42px;
+  border-radius: 36px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  min-width: 220px;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.btn-instagram:hover {
+  transform: translateY(-1px);
+  opacity: 0.98;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+.ver-mas {
+  padding: 40px 20px;
+  padding-top: 10px;
+  text-align: center;
+  background-color: #0a0d14;
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-blanco);
+}
+
+/* SERVICIOS */
+.servicios {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: var(--color-gris-oscuro);
+}
+
+.servicios h2 {
+  margin-bottom: 30px;
+  font-size: 1.6rem;
+}
+
+.tarjetas {
+  display: flex;
+  flex-direction: column; /* en celular, las tarjetas van una debajo de otra */
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tarjeta {
+  background: #11131a;
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid rgba(71, 197, 255, 0.15);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarjeta:hover,
+.tarjeta:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+}
+
+.precio {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-celeste);
+  margin-bottom: 8px;
+  border-bottom: 3px solid var(--color-celeste);
+  display: inline-block;
+}
+
+/* GALERÍA */
+.galeria {
+  padding: 50px 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #0a0d14;
+}
+
+.galeria h2 {
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+}
+
+.carousel {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.carousel-track-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin: 0 auto;
+}
+
+.carousel-track-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 14px;
+}
+
+.carousel-slide {
+  flex: 0 0 82%;
+  scroll-snap-align: center;
+  min-width: 240px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: 16px;
+  filter: grayscale(15%);
+  transition: transform 0.25s ease, filter 0.25s ease;
+  display: block;
+}
+
+.carousel-slide img:hover,
+.carousel-slide img:focus {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 42%;
+  }
+
+  .carousel-slide img {
+    height: 360px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-slide {
+    flex: 0 0 32%;
+  }
+
+  .carousel-slide img {
+    height: 380px;
+  }
+}
+
+.proceso {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: var(--color-gris-oscuro);
+}
+
+.proceso h2 {
+  margin-bottom: 18px;
+  font-size: 1.6rem;
+}
+
+.descripcion-proceso {
+  max-width: 900px;
+  margin: 0 auto 25px;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.descripcion-proceso p {
+  margin-bottom: 18px;
+  color: var(--color-subtexto);
+}
+
+.lista-requisitos {
+  list-style: none;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 0;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.lista-requisitos li {
+  background: #0b1018;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(71, 197, 255, 0.12);
+  box-shadow: 0 10px 34px rgba(0,0,0,0.24);
+}
+
+.subtitulo {
+  color: var(--color-texto);
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+/* ZONA */
+.zona {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #020305;
+  color: var(--color-blanco);
+}
+
+.zona h2 {
+  color: var(--color-celeste);
+  margin-bottom: 15px;
+}
+
+/* Contenedor del mapa: mantiene una proporción fija sin importar el ancho de pantalla */
+.mapa-contenedor {
+  max-width: 700px;
+  margin: 25px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(71, 197, 255, 0.16);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.28);
+  position: relative;
+}
+
+.mapa {
+  width: 100%;
+  height: 360px;
+  min-height: 360px;
+  border: 0;
+  display: block;
+  background: #050606;
+}
+
+/* Botón para borrar selección dentro del contenedor del mapa */
+.map-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #2ba8d7, #1b7f9d);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.24);
+}
+
+.map-btn:active { transform: translateY(1px); }
+
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+/* make map buttons slightly smaller on mobile */
+@media (max-width: 480px) {
+  .map-btn { padding: 6px 8px; font-size: 0.9rem; }
+}
+
+/* CONTACTO / FOOTER */
+.contacto {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #090c15;
+}
+
+.contacto h2 {
+  margin-bottom: 20px;
+  color: var(--color-blanco);
+}
+
+/* PANTALLAS GRANDES (tablets/desktop) */
+@media (min-width: 768px) {
+  .tarjetas {
+    flex-direction: row; /* en desktop, las tarjetas van en fila */
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+}
+
+/* ANIMACIONES (las controla script.js) */
+
+/* Estado inicial: la sección arranca invisible y un poco mas abajo */
+.pre-animacion {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Cuando script.js detecta que la sección entró en pantalla, agrega esta clase */
+.pre-animacion.aparecer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Transición suave para el efecto de "levantarse" en las tarjetas de servicios */
+.tarjeta {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
