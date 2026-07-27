@@ -49,148 +49,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (!mapaEl || typeof L === 'undefined') return;
 
-    const map = L.map('mapa').setView([-38.0150, -57.5330], 14);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const map = L.map('mapa').setView([-38.020285, -57.537427], 27/2); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
     }).addTo(map);
-    const drawnItems = new L.FeatureGroup();
-    map.addLayer(drawnItems);
 
-    const areaColor = '#7fd4e8';
-    const fillOpacity = 0.22;
+    // Colores y transparencia de las zonas marcadas
+    const areaColor = '#47c5ff';
+    const fillOpacity = 0.14;
 
-    const playaGrandeCoords = [
-      [-38.0028, -57.5398],
-      [-38.0028, -57.5252],
-      [-38.0138, -57.5252],
-      [-38.0138, -57.5398]
-    ];
+    // Coordenadas reales de cada zona (obtenidas una sola vez de OpenStreetMap
+    // y guardadas acá para siempre; por eso el mapa ya no necesita pedirlas
+    // de nuevo en cada visita)
+    const playaGrandeCoords = [[-38.024354, -57.548743], [-38.024867, -57.547733], [-38.025373, -57.546734], [-38.025893, -57.545706], [-38.026392, -57.544719], [-38.026867, -57.543747], [-38.027374, -57.542726], [-38.027885, -57.541717], [-38.028394, -57.540715], [-38.028889, -57.53974], [-38.029282, -57.538966], [-38.029399, -57.538734], [-38.029906, -57.537735], [-38.029123, -57.537106], [-38.0283, -57.536446], [-38.027553, -57.535844], [-38.02674, -57.535181], [-38.025966, -57.534553], [-38.025151, -57.533894], [-38.024625, -57.534882], [-38.024123, -57.535879], [-38.023623, -57.536872], [-38.023117, -57.537877], [-38.022632, -57.538863], [-38.022123, -57.539864], [-38.021611, -57.540866], [-38.021119, -57.541858], [-38.020599, -57.542875], [-38.020089, -57.543874], [-38.019579, -57.544906], [-38.020384, -57.545535], [-38.021177, -57.546167], [-38.021986, -57.546824], [-38.022732, -57.547428], [-38.023563, -57.548102], [-38.024354, -57.548743]];
 
-    const stellaMarisCoords = [
-      [-38.0088, -57.5248],
-      [-38.0088, -57.5162],
-      [-38.0188, -57.5162],
-      [-38.0188, -57.5248]
-    ];
+    const stellaMarisCoords = [[-38.016392, -57.542299], [-38.0169, -57.541299], [-38.01741, -57.540298], [-38.017922, -57.539282], [-38.018426, -57.538301], [-38.018938, -57.537298], [-38.01945, -57.536283], [-38.019943, -57.535321], [-38.020453, -57.534326], [-38.020959, -57.533324], [-38.021462, -57.532336], [-38.021975, -57.531327], [-38.022495, -57.530292], [-38.022938, -57.529403], [-38.023561, -57.528011], [-38.023491, -57.527995], [-38.023373, -57.52798], [-38.023194, -57.527962], [-38.023038, -57.527896], [-38.0228, -57.527856], [-38.022737, -57.527846], [-38.02268, -57.527844], [-38.022631, -57.527847], [-38.02245, -57.52786], [-38.022293, -57.527869], [-38.021596, -57.527861], [-38.021522, -57.52786], [-38.021368, -57.527855], [-38.020905, -57.52784], [-38.020546, -57.527805], [-38.020497, -57.527794], [-38.020447, -57.527777], [-38.0204, -57.527751], [-38.020359, -57.527717], [-38.020337, -57.527695], [-38.020311, -57.527648], [-38.020284, -57.527588], [-38.02026, -57.527506], [-38.020243, -57.527417], [-38.020217, -57.527264], [-38.020138, -57.526521], [-38.020098, -57.526253], [-38.020077, -57.526134], [-38.020054, -57.526041], [-38.020031, -57.525969], [-38.020006, -57.525915], [-38.019973, -57.525856], [-38.01993, -57.525788], [-38.019883, -57.52573], [-38.019826, -57.525677], [-38.019736, -57.525611], [-38.019616, -57.525537], [-38.019441, -57.52545], [-38.019383, -57.525424], [-38.019327, -57.525405], [-38.019228, -57.52538], [-38.019051, -57.525348], [-38.018928, -57.525314], [-38.018851, -57.525284], [-38.018718, -57.52523], [-38.018602, -57.525194], [-38.018554, -57.525165], [-38.018485, -57.525124], [-38.018191, -57.524978], [-38.017944, -57.524867], [-38.017865, -57.524842], [-38.017799, -57.524833], [-38.017749, -57.524832], [-38.017688, -57.524836], [-38.01764, -57.524844], [-38.017575, -57.524865], [-38.0175, -57.524897], [-38.017394, -57.524959], [-38.017292, -57.525041], [-38.017199, -57.525146], [-38.017121, -57.52525], [-38.017067, -57.525338], [-38.017023, -57.525422], [-38.01699, -57.525512], [-38.016966, -57.525607], [-38.016949, -57.525715], [-38.016939, -57.525855], [-38.016926, -57.526184], [-38.016889, -57.527179], [-38.016886, -57.527258], [-38.016878, -57.527468], [-38.016838, -57.528495], [-38.016835, -57.528585], [-38.016831, -57.52869], [-38.01681, -57.529234], [-38.016789, -57.52948], [-38.016765, -57.529689], [-38.016744, -57.52979], [-38.01672, -57.529893], [-38.016677, -57.530003], [-38.016614, -57.530109], [-38.016532, -57.530219], [-38.016464, -57.530305], [-38.0163, -57.530516], [-38.01626, -57.530573], [-38.016226, -57.530628], [-38.016178, -57.530717], [-38.016123, -57.530834], [-38.016074, -57.530934], [-38.016044, -57.530985], [-38.016006, -57.531037], [-38.01596, -57.531087], [-38.015894, -57.531147], [-38.015747, -57.531266], [-38.015592, -57.531388], [-38.015392, -57.531536], [-38.01531, -57.531585], [-38.015237, -57.531628], [-38.015097, -57.531703], [-38.014858, -57.531828], [-38.014359, -57.53209], [-38.014265, -57.532126], [-38.013907, -57.53228], [-38.013794, -57.532323], [-38.013677, -57.532362], [-38.013563, -57.532387], [-38.013482, -57.532402], [-38.013413, -57.532409], [-38.013349, -57.532413], [-38.013195, -57.532415], [-38.01293, -57.532417], [-38.012878, -57.532416], [-38.012578, -57.532351], [-38.012546, -57.53235], [-38.012207, -57.532345], [-38.012096, -57.532346], [-38.011975, -57.532367], [-38.011316, -57.532295], [-38.011099, -57.532288], [-38.011019, -57.53229], [-38.010958, -57.5323], [-38.010894, -57.532322], [-38.010822, -57.532359], [-38.010108, -57.532748], [-38.009941, -57.532824], [-38.009735, -57.532906], [-38.009464, -57.532992], [-38.009267, -57.533046], [-38.008838, -57.533158], [-38.008757, -57.533184], [-38.008691, -57.533214], [-38.008643, -57.533248], [-38.008603, -57.533288], [-38.008567, -57.533353], [-38.008538, -57.533432], [-38.008508, -57.533561], [-38.008483, -57.533765], [-38.008473, -57.533981], [-38.008471, -57.534264], [-38.008476, -57.534453], [-38.008493, -57.534587], [-38.008508, -57.534692], [-38.008543, -57.534828], [-38.00859, -57.534979], [-38.008622, -57.535114], [-38.008652, -57.535267], [-38.008671, -57.5354], [-38.008711, -57.536002], [-38.008713, -57.536084], [-38.009199, -57.536477], [-38.010047, -57.537164], [-38.010893, -57.537849], [-38.011669, -57.538478], [-38.012478, -57.539133], [-38.013261, -57.539764], [-38.014056, -57.540403], [-38.014862, -57.541053], [-38.015648, -57.541685], [-38.016392, -57.542299]];
 
-    const losTroncosCoords = [
-      [-38.0115, -57.5360],
-      [-38.0115, -57.5228],
-      [-38.0215, -57.5228],
-      [-38.0215, -57.5360]
-    ];
+    const losTroncosCoords = [[-38.018872, -57.548535], [-38.019368, -57.547548], [-38.019882, -57.546526], [-38.020384, -57.545535], [-38.019579, -57.544906], [-38.020089, -57.543874], [-38.020599, -57.542875], [-38.021119, -57.541858], [-38.021611, -57.540866], [-38.022123, -57.539864], [-38.022632, -57.538863], [-38.023117, -57.537877], [-38.023623, -57.536872], [-38.024123, -57.535879], [-38.024625, -57.534882], [-38.025151, -57.533894], [-38.024371, -57.533259], [-38.023575, -57.532613], [-38.022791, -57.531976], [-38.021975, -57.531327], [-38.021462, -57.532336], [-38.020959, -57.533324], [-38.020453, -57.534326], [-38.019943, -57.535321], [-38.01945, -57.536283], [-38.018938, -57.537298], [-38.018426, -57.538301], [-38.017922, -57.539282], [-38.01741, -57.540298], [-38.0169, -57.541299], [-38.016392, -57.542299], [-38.015886, -57.543303], [-38.015378, -57.544312], [-38.015371, -57.544325], [-38.01488, -57.545317], [-38.015704, -57.545981], [-38.016482, -57.546608], [-38.017276, -57.547249], [-38.018073, -57.54789], [-38.018872, -57.548535]];
 
-    const playaGrande = L.polygon(playaGrandeCoords, { color: areaColor, fillOpacity: fillOpacity }).bindPopup('Playa Grande');
-    const stellaMaris = L.polygon(stellaMarisCoords, { color: areaColor, fillOpacity: fillOpacity }).bindPopup('Stella Maris');
-    const losTroncos = L.polygon(losTroncosCoords, { color: areaColor, fillOpacity: fillOpacity }).bindPopup('Los Troncos');
-
-    const areaLayers = {
-      'Playa Grande': playaGrande,
-      'Stella Maris': stellaMaris,
-      'Los Troncos': losTroncos
-    };
-
-    drawnItems.addLayer(playaGrande);
-    drawnItems.addLayer(stellaMaris);
-    drawnItems.addLayer(losTroncos);
-
-    const clearBtn = document.getElementById('clear-area');
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        drawnItems.clearLayers();
-        for (const k of Object.keys(areaLayers)) delete areaLayers[k];
-        map.closePopup();
-      });
-    }
-
-    const mergeAreaLayers = () => {
-      const layers = Object.values(areaLayers).filter(Boolean);
-      if (layers.length === 0) return;
-      let merged = layers[0].toGeoJSON();
-      for (let i = 1; i < layers.length; i++) {
-        try {
-          merged = turf.union(merged, layers[i].toGeoJSON());
-        } catch (err) {
-          console.error('Error uniendo polígonos con Turf:', err);
-          return;
-        }
-      }
-      layers.forEach(l => drawnItems.removeLayer(l));
-      const mergedLayer = L.geoJSON(merged, { color: areaColor, weight: 2, fillOpacity: 0 }).bindPopup('Área conjunta');
-      drawnItems.addLayer(mergedLayer);
-      for (const k of Object.keys(areaLayers)) delete areaLayers[k];
-      areaLayers['Conjunto'] = mergedLayer;
-    };
-
-    const loadTurf = () => {
-      return new Promise((resolve, reject) => {
-        if (window.turf) return resolve(window.turf);
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js';
-        script.defer = true;
-        script.onload = () => resolve(window.turf);
-        script.onerror = reject;
-        document.body.appendChild(script);
-      });
-    };
-
-    const mergeBtn = document.getElementById('merge-areas');
-    if (mergeBtn) {
-      mergeBtn.addEventListener('click', async () => {
-        mergeBtn.disabled = true;
-        mergeBtn.textContent = 'Uniendo...';
-        try {
-          await loadTurf();
-          mergeAreaLayers();
-        } catch (err) {
-          console.error('No se pudo cargar Turf para unir áreas:', err);
-        } finally {
-          mergeBtn.disabled = false;
-          mergeBtn.textContent = 'Unir áreas';
-        }
-      });
-    }
-
-    const adjustBtn = document.getElementById('adjust-streets');
-    if (adjustBtn) {
-      adjustBtn.addEventListener('click', async () => {
-        adjustBtn.disabled = true;
-        adjustBtn.textContent = 'Ajustando...';
-        const queries = {
-          'Playa Grande': 'Playa Grande, Mar del Plata, Argentina',
-          'Stella Maris': 'Stella Maris, Mar del Plata, Argentina',
-          'Los Troncos': 'Los Troncos, Mar del Plata, Argentina'
-        };
-
-        for (const name of Object.keys(queries)) {
-          try {
-            const q = encodeURIComponent(queries[name]);
-            const url = `https://nominatim.openstreetmap.org/search?format=json&polygon_geojson=1&limit=1&q=${q}`;
-            const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
-            const data = await res.json();
-            if (Array.isArray(data) && data.length > 0 && data[0].geojson) {
-              if (areaLayers[name]) {
-                drawnItems.removeLayer(areaLayers[name]);
-              }
-              const geo = data[0].geojson;
-              const layer = L.geoJSON(geo, { style: { color: areaColor, fillOpacity: fillOpacity } }).bindPopup(name);
-              drawnItems.addLayer(layer);
-              areaLayers[name] = layer;
-            } else {
-              console.warn('No se encontró polígono para', name);
-            }
-          } catch (err) {
-            console.error('Error consultando Nominatim para', name, err);
-          }
-        }
-
-        adjustBtn.disabled = false;
-        adjustBtn.textContent = 'Ajustar por calles';
-      });
-      setTimeout(() => {
-        if (!adjustBtn.disabled) adjustBtn.click();
-      }, 700);
-    }
+    // Dibujamos las 3 zonas directo en el mapa, sin necesitar herramientas de edicion
+    L.polygon(playaGrandeCoords, { color: areaColor, weight: 1, fillOpacity: fillOpacity }).bindPopup('Playa Grande').addTo(map);
+    L.polygon(stellaMarisCoords, { color: areaColor, weight: 1, fillOpacity: fillOpacity }).bindPopup('Stella Maris').addTo(map);
+    L.polygon(losTroncosCoords, { color: areaColor, weight: 1, fillOpacity: fillOpacity }).bindPopup('Los Troncos').addTo(map);
   };
 
   if (mapaEl) {

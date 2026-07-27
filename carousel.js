@@ -19,6 +19,23 @@ document.addEventListener("DOMContentLoaded", () => {
         trackContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       }
     });
+
+    const carousel = trackContainer.closest('.carousel');
+    if (carousel) {
+      const prevButton = carousel.querySelector('.carousel-prev');
+      const nextButton = carousel.querySelector('.carousel-next');
+
+      if (prevButton) {
+        prevButton.addEventListener('click', () => {
+          trackContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+      }
+      if (nextButton) {
+        nextButton.addEventListener('click', () => {
+          trackContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      }
+    }
   });
 
   const slides = document.querySelectorAll('.carousel-slide');

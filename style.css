@@ -2,15 +2,15 @@
 
 /* Variables: nueva paleta pedida - oscuro y celeste vibrante */
 :root {
-  --color-negro: #070707;
-  --color-gris-oscuro: #141414;
-  --color-gris-medio: #242424;
+  --color-negro: #050505;
+  --color-gris-oscuro: #110909;
+  --color-gris-medio: #090b11;
   --color-blanco: #f5f7fb;
-  --color-celeste: #47c5ff;
-  --color-celeste-oscuro: #19a2e5;
+  --color-celeste: #edeef3;
   --color-texto: #e4e9f2;
   --color-subtexto: #b8c2d1;
-  --color-borde: rgba(71, 197, 255, 0.18);
+  --color-borde: #f4f5ed;
+  --radio: 8px;
   --fuente: 'Montserrat', Arial, sans-serif;
   --font-heading: 'Montserrat', var(--fuente);
 }
@@ -75,15 +75,15 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #14171f 0%, #090a0f 100%);
+  background-color: var(--color-negro);
   color: var(--color-blanco);
   text-align: center;
   padding: 50px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--color-borde);
 }
 
 .hero .logo {
-  width: 130px;
+  width: 70%;
   height: auto;
   object-fit: contain;
   margin-bottom: 10px;
@@ -105,48 +105,43 @@ h2 {
 /* Botón de WhatsApp (se usa en el hero y en el footer) */
 .btn-whatsapp {
   display: inline-block;
-  background: linear-gradient(135deg, var(--color-celeste), var(--color-celeste-oscuro));
+  background-color: var(--color-celeste);
   color: var(--color-negro);
   text-decoration: none;
   padding: 14px 28px;
-  border-radius: 30px;
+  border-radius: var(--radio);
   font-weight: bold;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 20px rgba(71, 197, 255, 0.14);
+  transition: opacity 0.2s ease;
 }
 
 .btn-whatsapp:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(71, 197, 255, 0.16);
+  opacity: 0.9;
 }
 
 .btn-instagram {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
-  color: #ffffff;
+  background-color: var(--color-celeste);
+  color: var(--color-negro);
   text-decoration: none;
   padding: 16px 42px;
-  border-radius: 36px;
+  border-radius: var(--radio);
   font-weight: 700;
   letter-spacing: 0.02em;
   min-width: 220px;
-  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+  transition: opacity 0.2s ease;
 }
 
 .btn-instagram:hover {
-  transform: translateY(-1px);
-  opacity: 0.98;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
 }
 
 .ver-mas {
   padding: 40px 20px;
   padding-top: 10px;
   text-align: center;
-  background-color: #0a0d14;
+  background-color: var(--color-negro);
   display: grid;
   gap: 18px;
   justify-items: center;
@@ -159,7 +154,7 @@ h2 {
 .servicios {
   padding: 50px 20px;
   text-align: center;
-  background-color: var(--color-gris-oscuro);
+  background-color: var(--color-negro);
 }
 
 .servicios h2 {
@@ -176,18 +171,15 @@ h2 {
 }
 
 .tarjeta {
-  background: #11131a;
-  border-radius: 16px;
+  background: #0f1116;
+  border-radius: var(--radio);
   padding: 25px;
-  border: 1px solid rgba(71, 197, 255, 0.15);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid var(--color-borde);
 }
 
 .tarjeta:hover,
 .tarjeta:focus-within {
-  transform: translateY(-6px);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+  transform: none;
 }
 
 .precio {
@@ -204,7 +196,7 @@ h2 {
   padding: 50px 20px;
   padding-bottom: 10px;
   text-align: center;
-  background-color: #0a0d14;
+  background-color: var(--color-negro);
 }
 
 .galeria h2 {
@@ -246,21 +238,84 @@ h2 {
   height: auto;
   max-height: 460px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: var(--radio);
   filter: grayscale(15%);
-  transition: transform 0.25s ease, filter 0.25s ease;
+  transition: filter 0.25s ease;
   display: block;
+}
+
+.carousel-buttons {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 10px;
+}
+
+.carousel-nav {
+  border: 1px solid rgba(237, 238, 243, 0.18);
+  background-color: rgba(237, 238, 243, 0.08);
+  color: var(--color-blanco);
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-nav:hover,
+.carousel-nav:focus-visible {
+  background-color: rgba(237, 238, 243, 0.14);
+  transform: translateY(-1px);
 }
 
 .carousel-slide img:hover,
 .carousel-slide img:focus {
   filter: grayscale(0%);
-  transform: scale(1.02);
 }
 
 @media (min-width: 768px) {
+  .hero {
+    padding: 80px 30px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 4vw, 3.4rem);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 720px;
+  }
+
+  .btn-whatsapp,
+  .btn-instagram {
+    padding: 16px 34px;
+  }
+
+  .tarjetas {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .tarjeta {
+    flex: 1 1 calc(33% - 16px);
+    min-width: 240px;
+  }
+
+  .carousel-buttons {
+    display: flex;
+  }
+
+  .carousel-track-container {
+    overflow-x: hidden;
+    scroll-snap-type: none;
+  }
+
   .carousel-slide {
     flex: 0 0 42%;
+    min-width: 42%;
   }
 
   .carousel-slide img {
@@ -269,19 +324,44 @@ h2 {
 }
 
 @media (min-width: 1024px) {
+  .hero {
+    padding: 90px 40px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 3.4vw, 3.8rem);
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+  }
+
+  .tarjetas {
+    gap: 24px;
+  }
+
+  .carousel-track-container {
+    overflow-x: hidden;
+  }
+
   .carousel-slide {
     flex: 0 0 32%;
+    min-width: 32%;
   }
 
   .carousel-slide img {
     height: 380px;
+  }
+
+  .mapa-contenedor {
+    max-width: 900px;
   }
 }
 
 .proceso {
   padding: 50px 20px;
   text-align: center;
-  background-color: var(--color-gris-oscuro);
+  background-color: var(--color-negro);
 }
 
 .proceso h2 {
@@ -312,11 +392,10 @@ h2 {
 }
 
 .lista-requisitos li {
-  background: #0b1018;
-  border-radius: 12px;
+  background: #0f1116;
+  border-radius: var(--radio);
   padding: 18px;
-  border: 1px solid rgba(71, 197, 255, 0.12);
-  box-shadow: 0 10px 34px rgba(0,0,0,0.24);
+  border: 1px solid #141825;
 }
 
 .subtitulo {
@@ -329,7 +408,7 @@ h2 {
 .zona {
   padding: 50px 20px;
   text-align: center;
-  background-color: #020305;
+  background-color: var(--color-negro);
   color: var(--color-blanco);
 }
 
@@ -342,10 +421,9 @@ h2 {
 .mapa-contenedor {
   max-width: 700px;
   margin: 25px auto 0;
-  border-radius: 18px;
+  border-radius: var(--radio);
   overflow: hidden;
-  border: 1px solid rgba(71, 197, 255, 0.16);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.28);
+  border: 1px solid var(--color-borde);
   position: relative;
 }
 
@@ -363,17 +441,16 @@ h2 {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: linear-gradient(135deg, #2ba8d7, #1b7f9d);
+  background-color: var(--color-celeste);
   color: white;
   border: none;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: var(--radio);
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.24);
 }
 
-.map-btn:active { transform: translateY(1px); }
+.map-btn:active { transform: none; }
 
 .map-controls {
   position: absolute;
@@ -392,7 +469,7 @@ h2 {
 .contacto {
   padding: 50px 20px;
   text-align: center;
-  background-color: #090c15;
+  background-color: var(--color-negro);
 }
 
 .contacto h2 {
@@ -429,5 +506,5 @@ h2 {
 
 /* Transición suave para el efecto de "levantarse" en las tarjetas de servicios */
 .tarjeta {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
